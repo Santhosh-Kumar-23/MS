@@ -13,7 +13,7 @@ npm i @react-native-async-storage/async-storage --save
 
 To generate a development key hash, run the following command in a command prompt in the Java SDK folder:
 
-[**Open ssl**] :(https://code.google.com/archive/p/openssl-for-windows/downloads)
+Downlaod :[**Open ssl**] :(https://code.google.com/archive/p/openssl-for-windows/downloads)
 
 ```bash
 keytool -exportcert -alias androiddebugkey -keystore "C:\Users\USERNAME\.android\debug.keystore" | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" sha1 -binary | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" base64
