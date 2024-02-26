@@ -1,79 +1,50 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+### Microsoft sign-in
 
-# Getting Started
-
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
+# Prerequisites
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+npm i react-native-azure-auth --save
+npm i @react-native-async-storage/async-storage --save
 ```
 
-## Step 2: Start your Application
+[**Refer**](https://www.npmjs.com/package/react-native-azure-auth)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+**hash key generation**
 
-### For Android
+To generate a development key hash, run the following command in a command prompt in the Java SDK folder:
+
+[**Open ssl**] :(https://code.google.com/archive/p/openssl-for-windows/downloads)
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+keytool -exportcert -alias androiddebugkey -keystore "C:\Users\USERNAME\.android\debug.keystore" | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" sha1 -binary | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" base64
 ```
 
-### For iOS
+To allow the application to interact with the Microsoft server, it needs to be registered through [**Microsoft Application Registration Portal**](https://apps.dev.microsoft.com/#/appList).
 
-```bash
-# using npm
-npm run ios
+Once the app is registered, an Application ID will be generated.
 
-# OR using Yarn
-yarn ios
-```
+![Alt text](image.png)
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Go to the Certificates & Secrets section on the left and click New client secret, give your secret a name and click the Add button to get the secret key generated.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+![Alt text](image-1.png)
 
-## Step 3: Modifying your App
+It will take two to three seconds before the secrete key will be shown on the screen.
 
-Now that you have successfully run the app, let's modify it.
+Everything seems to be pretty good, but one more thing we have to tell Microsoft is which platform we are going to integrate this app on.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Go to Authentication > Add a platform > Android
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+![Alt text](image-2.png)
 
-## Congratulations! :tada:
+fill package name and signature has key
 
-You've successfully run and modified your React Native App. :partying_face:
+![Alt text](image-4.png)
 
-### Now what?
+**NOTE** : kindly change in manifest section ---------> oauth2AllowIdTokenImplicitFlow : true
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+![Alt text](image-6.png)
 
-# Troubleshooting
+Out put
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![Alt text](image-5.png)
